@@ -1,11 +1,12 @@
 import {createSiteMenuTemplate} from './components/site-menu.js'
+import {generateFilters} from './mock/filter'
 import {createFilterTemplate} from './components/filters.js'
 import {createBoardTemplate} from './components/board.js'
 import {createTaskTemplate} from './components/task.js'
 import {createTaskEditTemplate} from './components/task-edit.js'
 import {createLoadMoreButtonTemplate} from './components/load-more-button'
 
-const TASK_COUNT = 3
+const TASK_COUNT = 22
 
 const render = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template)
@@ -14,7 +15,9 @@ const render = (container, template, place = `beforeend`) => {
 const siteMainElement = document.querySelector(`.main`)
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`)
 render(siteHeaderElement, createSiteMenuTemplate())
-render(siteMainElement, createFilterTemplate())
+
+const filters = generateFilters()
+render(siteMainElement, createFilterTemplate(filters))
 render(siteMainElement, createBoardTemplate())
 
 const tasksListElement = siteMainElement.querySelector(`.board__tasks`)
