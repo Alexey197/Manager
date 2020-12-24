@@ -4,7 +4,7 @@ import {getRandomIntegerNumber} from '../utils'
 
 const DescriptionItems = [
   `Изучить теорию`,
-  `Сделать домшку`,
+  `Сделать домашку`,
   `Пройти интенсив на соточку`,
 ]
 
