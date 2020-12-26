@@ -1,6 +1,6 @@
 import {Colors} from '../const'
 import {getRandomArrayItem} from '../utils'
-import {getRandomIntegerNumber} from '../utils'
+import {getRandomDate} from '../utils'
 
 const DescriptionItems = [
   `Изучить теорию`,
@@ -26,22 +26,6 @@ const Tags = [
   `keks`
 ]
 
-const getRandomDate = () => {
-  const targetDate = new Date()
-  const sign = Math.random() > 0.5 ? 1 : -1
-  const diffValue = sign * getRandomIntegerNumber(0, 7)
-
-  targetDate.setDate(targetDate.getDate() + diffValue)
-  return targetDate
-}
-
-const getCurrentDate = () => {
-  const currentDate = new Date()
-  currentDate.setHours(23, 59, 59, 999)
-  
-  return new Date(currentDate)
-}
-
 const generateRepeatingDays = () => {
   return Object.assign({}, DefaultRepeatingDays, {
     'mo': Math.random() > 0.5
@@ -52,14 +36,6 @@ const generateTags = (tags) => {
   return tags
     .filter(() => Math.random() > 0.5)
     .slice(0, 3)
-}
-
-export const isTaskExpired = (dueDate) => {
-  if (dueDate === null) {
-    return false
-  }
-  const currentDate = getCurrentDate()
-  return currentDate.getTime() > dueDate.getTime()
 }
 
 export const generateTask = () => {

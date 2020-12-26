@@ -1,6 +1,5 @@
 import {Colors} from '../const'
-import {humanizeTaskDate, isTaskRepeating} from '../utils'
-import {isTaskExpired} from '../mock/task'
+import {humanizeTaskDate, isTaskRepeating, isTaskExpired} from '../utils'
 
 const createTaskEditDateTemplate = (dueDate) => {
   return (

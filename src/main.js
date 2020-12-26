@@ -21,7 +21,7 @@ const siteMainElement = document.querySelector(`.main`)
 const siteHeaderElement = siteMainElement.querySelector(`.main__control`)
 render(siteHeaderElement, createSiteMenuTemplate())
 
-const filters = generateFilters()
+const filters = generateFilters(tasks)
 render(siteMainElement, createFilterTemplate(filters))
 render(siteMainElement, createBoardTemplate())
 
