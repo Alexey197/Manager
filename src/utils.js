@@ -20,3 +20,11 @@ export const formatTime = (date) => {
   
   return `${hours}:${minutes} ${interval}`
 }
+
+export const humanizeTaskDate = (dueDate) => {
+  return dueDate.toLocaleString(`en-US`, {day: `numeric`, month: `long`})
+}
+
+export const isTaskRepeating = (repeatingDays) => {
+  return Object.values(repeatingDays).some(Boolean)
+}
