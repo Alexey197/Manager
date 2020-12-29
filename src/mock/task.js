@@ -1,6 +1,6 @@
 import {Colors} from '../const'
-import {getRandomArrayItem} from '../utils'
-import {getRandomDate} from '../utils'
+import {getRandomArrayItem} from '../utils/task'
+import {getRandomDate} from '../utils/task'
 
 const DescriptionItems = [
   `Изучить теорию`,
