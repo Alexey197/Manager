@@ -63,12 +63,31 @@ const createTaskEditColorsMarkup = (currentColor) => {
       >${color}</label>`).join(``);
 }
 
+const createTaskEditTagsMarkup = (tags) => {
+  return tags.map((tag) => `<span
+      class="card__hashtag-inner">
+        <input
+          type="hidden"
+          name="hashtag"
+          value="repeat"
+          class="card__hashtag-hidden-input"
+        />
+        <p class="card__hashtag-name">
+          ${tag}
+        </p>
+        <button type="button" class="card__hashtag-delete">
+          delete
+        </button>
+      </span>`).join(``)
+}
+
 export const createTaskEditTemplate = (task = {}) => {
   const {
     color = `black`,
     description = ``,
     dueDate,
-    repeatingDays
+    repeatingDays,
+    tags
   } = task
   
   const colorTemplate = createTaskEditColorsMarkup(color)
@@ -80,6 +99,7 @@ export const createTaskEditTemplate = (task = {}) => {
   const deadlineClassName = isTaskExpired(dueDate)
     ? `card--deadline`
     : ``
+  const tagTemplate = createTaskEditTagsMarkup(Array.from(tags))
   
   return (
     `<article class="card card--edit card--${color} ${deadlineClassName} ${repeatingClassName}">
@@ -91,7 +111,7 @@ export const createTaskEditTemplate = (task = {}) => {
              </svg>
            </div>
            <div class="card__textarea-wrap">
-             <l
+             <label>
                <textarea
                  class="card__text"
                  placeholder="Start typing your text here..."
@@ -105,6 +125,19 @@ export const createTaskEditTemplate = (task = {}) => {
                  ${dateTemplate}
                  ${repeatingTemplate}
                </div>
+               <div class="card__hashtag">
+                 <div class="card__hashtag-list">
+                   ${tagTemplate}
+                 </div>
+                 <label>
+                   <input
+                     type="text"
+                     class="card__hashtag-input"
+                     name="hashtag-input"
+                     placeholder="Type new hashtag here"
+                   />
+                 </label>
+               </div>
              </div>
              <div class="card__colors-inner">
                <h3 class="card__colors-title">Color</h3>
@@ -114,7 +147,7 @@ export const createTaskEditTemplate = (task = {}) => {
              </div>
            </div>
            <div class="card__status-btns">
-             <buclass="card__save" type="submit">save</button>
+             <button class="card__save" type="submit">save</button>
              <button class="card__delete" type="button">delete</button>
            </div>
          </div>

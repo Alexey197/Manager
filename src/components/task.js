@@ -2,7 +2,7 @@ import {MonthNames} from '../const.js'
 import {formatTime} from '../utils/task'
 import {createElement} from '../utils/render'
 
-const createHashtagsMurkup = (hashtags) => {
+const createHashtagsMarkup = (hashtags) => {
   return hashtags
     .map((hashtag) => {
       return (
@@ -25,7 +25,7 @@ export const createTaskTemplate = (task) => {
   const date = isDateShowing ? `${dueDate.getDate()} ${MonthNames[dueDate.getMonth()]}` : ``
   const time = isDateShowing ? formatTime(dueDate) : ``
   
-  const hashtags = createHashtagsMurkup(Array.from(tags))
+  const hashtags = createHashtagsMarkup(Array.from(tags))
   const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``
   const deadlineClass = isExpired ? `card--deadline` : ``
   
