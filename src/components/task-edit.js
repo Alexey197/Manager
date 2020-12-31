@@ -1,6 +1,6 @@
 import {Colors} from '../const'
 import {humanizeTaskDate, isTaskRepeating, isTaskExpired} from '../utils/task'
-import {createElement} from '../utils/render'
+import AbstractComponent from './abstract-component'
 
 const createTaskEditDateTemplate = (dueDate) => {
   return (
@@ -73,7 +73,7 @@ const createTaskEditTagsMarkup = (tags) => {
           class="card__hashtag-hidden-input"
         />
         <p class="card__hashtag-name">
-          ${tag}
+          #${tag}
         </p>
         <button type="button" class="card__hashtag-delete">
           delete
@@ -157,25 +157,13 @@ export const createTaskEditTemplate = (task = {}) => {
   )
 }
 
-export default class TaskEdit {
+export default class TaskEdit extends AbstractComponent {
   constructor(task) {
+    super()
     this._task = task
-    this._element = null
   }
   
   getTemplate() {
     return createTaskEditTemplate(this._task)
-  }
-  
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate())
-    }
-    
-    return this._element
-  }
-  
-  removeElement() {
-    this._element = null
   }
 }

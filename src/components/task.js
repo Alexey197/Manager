@@ -1,6 +1,6 @@
 import {MonthNames} from '../const.js'
 import {formatTime} from '../utils/task'
-import {createElement} from '../utils/render'
+import AbstractComponent from './abstract-component'
 
 const createHashtagsMarkup = (hashtags) => {
   return hashtags
@@ -81,25 +81,13 @@ export const createTaskTemplate = (task) => {
   )
 }
 
-export default class Task {
+export default class Task extends AbstractComponent {
   constructor(task) {
+    super()
     this._task = task
-    this._element = null
   }
   
   getTemplate() {
     return createTaskTemplate(this._task)
-  }
-  
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate())
-    }
-    
-    return this._element
-  }
-  
-  removeElement() {
-    this._element = null
   }
 }

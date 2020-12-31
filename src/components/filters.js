@@ -1,4 +1,4 @@
-import {createElement} from '../utils/render'
+import AbstractComponent from './abstract-component'
 
 const createFilterMarkup = (filter, isChecked) => {
   const {name, count} = filter
@@ -29,25 +29,13 @@ const createFilterTemplate = (filters) => {
   )
 }
 
-export default class Filter {
+export default class Filter extends AbstractComponent {
   constructor(filters) {
+    super()
     this._filter = filters
-    this._element = null
   }
   
   getTemplate() {
     return createFilterTemplate(this._filter)
-  }
-  
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate())
-    }
-  
-    return this._element
-  }
-  
-  removeElement() {
-    this._element = null
   }
 }
