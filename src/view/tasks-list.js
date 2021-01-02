@@ -1,14 +1,10 @@
-import AbstractComponent from './abstract-component'
+import AbstractView from './abstract';
 
 const createTaskListTemplate = () => {
   return `<div class="board__tasks"></div>`
 }
 
-export default class Board extends AbstractComponent {
-  constructor() {
-    super()
-  }
-  
+export default class TasksList extends AbstractView {
   getTemplate() {
     return createTaskListTemplate()
   }
