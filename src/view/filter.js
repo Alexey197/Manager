@@ -3,8 +3,7 @@ import AbstractView from './abstract';
 const createFilterItemTemplate = (filter, isChecked) => {
   const {name, count} = filter
   return (
-    `<section class="main__filter filter container">
-    <input
+    `<input
       type="radio"
       id="filter__${name}"
       class="filter__input visually-hidden"
